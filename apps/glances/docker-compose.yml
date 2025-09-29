@@ -3,10 +3,7 @@ services:
     image: nicolargo/glances:latest-full
     container_name: glances
     restart: always
-    pid: "host"
-    privileged: true
-    ports:
-      - "61208-61209:61208-61209"
+    pid: host
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
       - "/run/user/1000/podman/podman.sock:/run/user/1000/podman/podman.sock:ro"
