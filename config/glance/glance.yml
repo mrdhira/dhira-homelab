@@ -1,4 +1,5 @@
-theme: dark
+theme:
+  name: dark
 
 title: Dhira Homelab
 subtitle: Raspberry Pi 5 · Ubuntu 24.04 · Docker
@@ -9,8 +10,8 @@ sections:
   - name: Core Services
     items:
       - title: Portainer
-        url: http://192.168.1.18:9000
+        url: http://pi.local:9000
         icon: docker
       - title: CasaOS
-        url: http://192.168.1.18:8080
+        url: http://pi.local:8080
         icon: home

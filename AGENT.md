@@ -22,17 +22,20 @@ homelab/
 │   │   └── docker-compose.yml
 │   ├── casaos/
 │   │   └── docker-compose.yml
-│   └── (future apps: nextcloud/, plex/, uptime-kuma/, etc.)
+│   └── glance/
+│       └── docker-compose.yml
 ├── config/
+│   └── glance/
+│       └── glance.yml
 ├── docker/
 ├── Makefile
 ├── README.md
-└── AGENT.md   <-- this file
+└── AGENT.md
 ```
 
 - Each app has its own **docker-compose.yml** inside `apps/<appname>/`.
+- **Configs live under `/config/`** for easier backups and versioning.
 - The **Makefile** manages single apps or all apps at once.
-- `config/` holds configs; `docker/` holds custom Dockerfiles.
 
 ---
 
@@ -76,6 +79,29 @@ services:
 volumes:
   casaos_data:
 ```
+
+---
+
+## 🖥️ Glance (Dashboard)
+
+- **Purpose**: Startpage / bookmark dashboard for homelab apps.  
+- **Config**: `config/glance/glance.yml`  
+- **URL**: `http://<pi-ip>:7000`  
+
+Example config (current services):
+```yaml
+- name: Core Services
+  items:
+    - title: Portainer
+      url: http://pi.local:9000
+      icon: docker
+    - title: CasaOS
+      url: http://pi.local:8080
+      icon: home
+```
+
+👉 Glance does **not** expose system metrics.  
+👉 Use `glances` (installed via `apt install glances`) if you want a system monitor.
 
 ---
 
