@@ -1,0 +1,9 @@
+services:
+  glance:
+    image: glanceapp/glance:latest
+    container_name: glance
+    restart: unless-stopped
+    ports:
+      - "7000:8080"   # Access via http://<pi-ip>:7000
+    volumes:
+      - ../../config/glance/glance.yml:/app/config/glance.yml:ro
