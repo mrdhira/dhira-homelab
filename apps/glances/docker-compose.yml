@@ -1,11 +1,25 @@
 services:
   glances:
-    image: nicolargo/glances:latest
-    container_name: glances
-    restart: unless-stopped
-    pid: host
-    network_mode: host
-    environment:
-      - GLANCES_OPT=-w
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    restart: always
+    pid: "host"
+    privileged: true
+    network_mode: "host"
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+      - "../../config/glances/glances.conf:/glances/conf/glances.conf"
+    # Uncomment for proper distro information in upper panel. 
+    # Works only for distros that do have this file (most of distros do).
+      - "/etc/os-release:/etc/os-release:ro"
+    environment:
+      - TZ=${TZ}
+      - GLANCES_OPT=-C /glances/conf/glances.conf -w
+#     secrets:
+#       - source: glances_password
+#         target: /root/.config/glances/<login>.pwd
+
+# secrets:
+#   glances_password:
+#     file: ./secrets/glances_password
