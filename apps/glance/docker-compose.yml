@@ -6,4 +6,8 @@ services:
     ports:
       - "7000:8080"   # Access via http://<pi-ip>:7000
     volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ../../assets/glance:/app/assets
       - ../../config/glance/glance.yml:/app/config/glance.yml:ro
+    env_file: .env
