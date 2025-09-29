@@ -9,6 +9,7 @@ services:
     network_mode: "host"
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
+      - "/etc/os-release:/etc/os-release:ro"
       - "../../config/glances/glances.conf:/glances/conf/glances.conf"
     # Uncomment for proper distro information in upper panel. 
     # Works only for distros that do have this file (most of distros do).
