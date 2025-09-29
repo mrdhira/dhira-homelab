@@ -12,10 +12,10 @@ services:
       - "../../config/glances/glances.conf:/glances/conf/glances.conf"
     environment:
       - TZ=Asia/Jakarta
-      - GLANCES_OPT=-w --password --username dhirawigata
+      - GLANCES_OPT=-w --password
     secrets:
       - source: glances_password
-        target: /root/.config/glances/dhirawigata.pwd
+        target: /root/.config/glances/glances.pwd
 
 secrets:
   glances_password:
