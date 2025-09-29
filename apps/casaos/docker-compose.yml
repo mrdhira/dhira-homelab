@@ -1,15 +1,14 @@
-version: "3.9"
-
 services:
   casaos:
-    image: casaos/next:latest
+    image: dockurr/casa:latest
     container_name: casaos
     restart: unless-stopped
+    stop_grace_period: 1m
     ports:
-      - "8080:80"
+      - "8080:8080"   # CasaOS dashboard
     volumes:
-      - casaos_data:/casaOS
       - /var/run/docker.sock:/var/run/docker.sock
+      - casaos_data:/DATA
 
 volumes:
   casaos_data:
