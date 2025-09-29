@@ -88,18 +88,32 @@ volumes:
 - **Config**: `config/glance/glance.yml`  
 - **URL**: `http://<pi-ip>:7000`  
 
-Example config (current services):
+Correct example config:
 ```yaml
-- name: Core Services
-  items:
-    - title: Portainer
-      url: http://pi.local:9000
-      icon: docker
-    - title: CasaOS
-      url: http://pi.local:8080
-      icon: home
+theme:
+  name: dark
+
+title: Dhira Homelab
+subtitle: Raspberry Pi 5 · Ubuntu 24.04 · Docker
+
+pages:
+  - name: Home
+    columns:
+      - size: full
+        widgets:
+          - type: bookmarks
+            groups:
+              - title: Services
+                links:
+                  - title: Portainer
+                    url: http://pi.local:9000
+                    icon: docker
+                  - title: CasaOS
+                    url: http://pi.local:8080
+                    icon: home
 ```
 
+👉 Glance requires at least one `pages:` block.  
 👉 Glance does **not** expose system metrics.  
 👉 Use `glances` (installed via `apt install glances`) if you want a system monitor.
 
