@@ -37,3 +37,19 @@ Restart after changes:
 ```
 make restart name=glance
 ```
+
+# Glances (System Monitor)
+
+System monitoring dashboard for CPU, RAM, disk, network, and Docker stats.
+
+- URL: http://<pi-ip>:61208
+- Based on `nicolargo/glances`
+- Runs with host PID + network access for full monitoring
+
+## Commands
+```bash
+make up name=glances
+make logs name=glances
+make down name=glances
+make clean name=glances
+```
